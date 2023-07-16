@@ -4,7 +4,7 @@ from faker import Faker
 from app import app
 from models import db, Production, CrewMember, User
 
-db.init_app(app)
+# db.init_app(app)
 fake = Faker()
 
 with app.app_context():   
@@ -52,7 +52,7 @@ with app.app_context():
     db.session.add_all(hamilton_crew_members)
     db.session.commit()
 
-    # user = User(name='Rose Thecat', email='rose_is_cute@gmail.com')
-    # db.session.add(user)
-    # db.session.commit()
+    user = User(name='Rose Thecat', email='rose_is_cute@gmail.com')
+    db.session.add(user)
+    db.session.commit()
 
