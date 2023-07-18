@@ -36,7 +36,7 @@ app.json.compact = False
 # Set up:
     # generate a secrete key `python -c 'import os; print(os.urandom(16))'`
 
-app.secret_key = 'Secret Key Here!'
+app.secret_key = b'\xdf\xae\x13\xb9\xfc\xce\x8e{zq.\x0b\xf5\x7f,\xb3'
 
 migrate = Migrate(app, db)
 db.init_app(app)
@@ -195,8 +195,10 @@ class AuthorizedSession(Resource):
         # 4.2.1 Access the user_id from session with session.get
 
         # 4.2.2 Use the user id to query the user with a .filter
+
         user = User.query.filter_by(id=session.get('user_id')).first()
         # 4.2.3 If the user id is in sessions and found make a response to send to the client. 
+        #import ipdb; ipdb.set_trace() 
         if user:
             response = make_response(
                 user.to_dict(),

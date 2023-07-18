@@ -58,8 +58,8 @@ function App() {
     return(
     <>
       <GlobalStyle />
-      <Navigation />
-      <Authentication updateUser={updateUser} />
+      <Navigation updateUser={updateUser} user={user}/>
+      <Authentication updateUser={updateUser}  />
     </>
   )
 
@@ -71,7 +71,7 @@ function App() {
       <Navigation updateUser={updateUser} user={user}/>
         <Switch>
           <Route path='/productions/new'>
-            <ProductionForm addProduction={addProduction}/>
+            <ProductionForm addProduction={addProduction} user={user}/>
           </Route>
           <Route path='/productions/:id'>
               <ProductionDetail />

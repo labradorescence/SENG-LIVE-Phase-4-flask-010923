@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
-function Navigation({user, updateUser}) {
+function Navigation({ updateUser, user }) {
  const [menu, setMenu] = useState(false)
  const history = useHistory()
 
@@ -24,13 +24,10 @@ function Navigation({user, updateUser}) {
 
     // 7.✅ Head back to server/app.py to build a route that will keep our user logged in with sessions
 
-    console.log("--------------")
-    console.log(user)
-
     return (
         <Nav> 
          <NavH1>Flatiron Theater Company</NavH1>
-         <h1>hello</h1>
+         {user?<h1>hello {user.name}</h1> : <></>}
          <Menu>
            {!menu?
            <div onClick={() => setMenu(!menu)}>
@@ -38,10 +35,10 @@ function Navigation({user, updateUser}) {
            </div>:
            <ul>
             <li onClick={() => setMenu(!menu)}>x</li>
-            <li><Link to='/productions/new'>New Production</Link></li>
-            <li><Link to='/'> Home</Link></li>
-            <li><Link to='/authentication'> Login/Signup</Link></li>
-            <li onClick={handleLogout}> Logout </li>
+            { user === null || user.admin === "0" || user.admin === false? <></>:<li><Link to='/productions/new'>New Production</Link></li>}
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/authentication'>Login/Signup</Link></li>
+            <li onClick={handleLogout}>Logout </li>
            </ul>
            }
          </Menu>
