@@ -10,7 +10,7 @@
 # Set Up:
     # In Terminal, `cd` into `server` and run the following:
         # export FLASK_APP=app.py
-        # export FLASK_RUN_PORT=5000
+        # export FLASK_APP=app.py
         # flask db init
         # flask db revision --autogenerate -m 'Create tables' 
         # flask db upgrade 
